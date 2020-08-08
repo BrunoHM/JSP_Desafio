@@ -5,6 +5,6 @@
 		<jsp:include page="WEB-INF/includes/header.html" />
 	</head>
 	<body>
-		<jsp:include page="WEB-INF/includes/menu.html" />
+		<jsp:include page="WEB-INF/includes/menu.jsp" />
 	</body>
 </html>
