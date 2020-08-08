@@ -1,12 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Hello World JSP</title>
-</head>
-<body>
-	<span>Hello World</span>
-</body>
+	<head>
+		<jsp:include page="WEB-INF/includes/header.html" />
+	</head>
+	<body>
+		<jsp:include page="WEB-INF/includes/menu.html" />
+	</body>
 </html>
