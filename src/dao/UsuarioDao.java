@@ -12,16 +12,16 @@ public class UsuarioDao {
 	private PreparedStatement queryDtb;
 	private ResultSet resultadoDtb;
 	
-	private void insertUsuario() {
-		try {
-			queryDtb = conexaoDtb.prepareStatement("INSERT INTO cliente (nome, sobrenome, cpf, ativo) VALUES (?,?,?,?)");
-			//Implementar Insert Usuario ...		
-		}catch(Exception e) {
-			
-		}
-	}
+//	private void insertUsuario() {
+//		try {
+//			queryDtb = conexaoDtb.prepareStatement("INSERT INTO cliente (nome, sobrenome, cpf, ativo) VALUES (?,?,?,?)");
+//			Implementar Insert Usuario ...		
+//		}catch(Exception e) {
+//			
+//		}
+//	}
 	
-	public ResultSet getAllusuario() {
+	public ResultSet getAllusuarios() {
 		selectAllUsuarios();
 		return resultadoDtb;
 	}

@@ -6,7 +6,7 @@
   </nav>
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="bg-dark p-4">
-		<button type="button" class="btn btn-dark border border-white" onclick="window.location='${pageContext.request.contextPath}/usuario';">
+		<button type="button" class="btn btn-dark border border-white" onclick="window.location='${pageContext.request.contextPath}/usuarios';">
     		<span class="text-white h5">> Usuários</span>
     	</button>
     </div>
