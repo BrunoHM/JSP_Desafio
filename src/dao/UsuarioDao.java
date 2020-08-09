@@ -36,5 +36,23 @@ public class UsuarioDao {
 		}
 	}
 	
+	public void deletaUsuario(int idUsuario) {
+		deleteUser(idUsuario);
+	}
+	
+	private int deleteUser(int userId) {
+		int statusOperation = 0;
+		
+		try {
+			queryDtb = conexaoDtb.prepareStatement("DELETE usuario FROM usuario WHERE idUsuario = ?");
+			queryDtb.setInt(1, userId);
+			statusOperation = queryDtb.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return statusOperation;
+	}
+	
 	
 }
