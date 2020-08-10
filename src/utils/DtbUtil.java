@@ -5,29 +5,18 @@ import java.sql.DriverManager;
 
 public class DtbUtil {
 
-	public DtbUtil(){
-		conectaDtb();
-	}
+	public static Connection conexaoDtb;
 	
-	Connection conexaoDtb;
-	
-	public void conectaDtb() {
-		try {
-			connectDtb();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private void connectDtb() throws Exception {
+	public static Connection getConexao() {
 		if(conexaoDtb == null) {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			conexaoDtb = DriverManager.getConnection("jdbc:mysql://localhost:3306/desafio_Jsp?serverTimezone=UTC","root","@Grilo1324");
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				conexaoDtb = DriverManager.getConnection("jdbc:mysql://localhost:3306/desafio_Jsp?serverTimezone=UTC","root","@Grilo1324");
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-	}
-	
-	public Connection getConexao() {
-		return conexaoDtb;
+		return conexaoDtb; 
 	}
 	
 }
