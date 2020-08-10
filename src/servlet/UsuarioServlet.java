@@ -11,18 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import service.UsuarioService;
 
-@WebServlet("/usuarios")
+@WebServlet(urlPatterns = {"/usuarios", "/insereUsuario", "/deletaUsuario"})
 public class UsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      
     public UsuarioServlet() {
         super();
     }
-
-	private UsuarioService usuarioService = new UsuarioService();
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		usuarioService.getTodosUsuarios(request);
+		UsuarioService usuarioService = new UsuarioService();
+		usuarioService.checkAction(request);
 		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/view/usuarios.jsp");
 		dispatcher.forward(request, response);
 	}
