@@ -1,10 +1,7 @@
 jQuery(document).ready(function($) {
-	let $el = $('.divTel');
 	
 	$('button', $('.cadCli')).on('click', function() {
-		  $elPai = $($el).clone().insertAfter($('.divEmail')).removeClass('col-4').addClass('col-12');
-		  $elPai.children().eq(0).removeClass('col-3').addClass('col-1');
-		  $elPai.children().eq(1).removeClass('col-6').addClass('col-2');
+		$($('#divTel')).clone().removeAttr("id").insertAfter($('#divTel'));
 	});
 	
 	$('.deleteIcon').on('click', function() {
@@ -16,9 +13,7 @@ jQuery(document).ready(function($) {
 		      data: {idUserDel: idUser},
 		      method: "Post",
 		      url: "/Desafio/deletaUsuario",
-		      success: function(result){
-		    	  //console.info(result);
-		      }
+		      success: function(result){}
 		});
 	});
 	
