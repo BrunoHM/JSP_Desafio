@@ -1,20 +1,20 @@
-#Readme
+# Readme
 
-#####Instalar e configurar Java 13
+##### Instalar e configurar Java 13
 
-#####Instalar e configurar apache maven 3.6.3
+##### Instalar e configurar apache maven 3.6.3
 
-#####Instalar apache tomcat 8.5.57
+##### Instalar apache tomcat 8.5.57
 
-#####Instalar e configurar mysql 8
+##### Instalar e configurar mysql 8
 
 1 - Fazer download do projeto da branch master.
 
-#####Preparação do banco de dados
+##### Preparação do banco de dados
 
 2 - Executar arquivo "%desafio%/script.sql" no banco de dados mysql
 
-#####Preparação da aplicação
+##### Preparação da aplicação
 
 2 - Editar conexão, usuário e senha com banco de dados mysql no arquivo "%desafio%/src/utils/DtbUtil.java"
 
