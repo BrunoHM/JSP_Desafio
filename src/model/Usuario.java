@@ -1,7 +1,8 @@
 package model;
 
 public class Usuario {
-	private int id;
+	
+	private Long id;
 	private String nome;
 	private String sobrenome;
 	private String cpf;
@@ -9,19 +10,12 @@ public class Usuario {
 	
 	public Usuario() {}
 			
-	public Usuario(String nome, String sobrenome, String cpf, boolean ativo) {
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.cpf = cpf;
-		this.ativo = ativo;
-	}
-
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
