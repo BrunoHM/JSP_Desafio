@@ -11,11 +11,7 @@ import model.Usuario;
 
 public class UsuarioService {
 	
-	ResultSet retornoSelect;
-	
 	UsuarioDao usuarioDao = new UsuarioDao();
-	Usuario usuario       = new Usuario();
-	
 	
 	public void checkAction(HttpServletRequest request) {
 		String requestUri = request.getRequestURI();
@@ -25,6 +21,9 @@ public class UsuarioService {
 			getTodosUsuarios(request);
 		}else if(requestUri.equals("deletaUsuario")) {
 			deletaUsuario(request);
+		}else if(requestUri.equals("insereUsuario")) {
+			addUsuario(request);
+			getTodosUsuarios(request);
 		}
 		
 	}
@@ -32,6 +31,7 @@ public class UsuarioService {
 	private void deletaUsuario(HttpServletRequest request) {
 		if(request.getParameter("idUserDel") != null) {
 			int idUsuario = Integer.valueOf(request.getParameter("idUserDel"));
+			
 			if(idUsuario > 0) {
 				usuarioDao.deletaUsuario(idUsuario);
 			}
@@ -40,6 +40,8 @@ public class UsuarioService {
 	}
 
 	private void getTodosUsuarios(HttpServletRequest request) {
+		ResultSet retornoSelect;
+		Usuario usuario;
 		try {
 			retornoSelect = usuarioDao.getAllusuarios();
 			List<Usuario> listUsuario = new ArrayList<Usuario>();
@@ -47,7 +49,7 @@ public class UsuarioService {
 			while(retornoSelect.next()) {
 				usuario = new Usuario();
 				
-				usuario.setId(retornoSelect.getInt(1));
+				usuario.setId(retornoSelect.getLong(1));
 				usuario.setNome(retornoSelect.getString(2));
 				usuario.setSobrenome(retornoSelect.getString(3));
 				usuario.setCpf(retornoSelect.getString(4));
@@ -63,5 +65,43 @@ public class UsuarioService {
 	}
 	
 	
+	private void addUsuario(HttpServletRequest request) {
+		List<Long> idTelefones;
+		Long idUsuario;
+		Long idEmail;
+		
+		TelefoneService telefoneService = new TelefoneService();
+		telefoneService.insereTelefone(request);
+		idTelefones = telefoneService.getIdTelefones();
+		
+		EmailService emailService = new EmailService();
+		emailService.insereEmail(request);
+		idEmail = emailService.getIdEmail();
+		
+		insereUsuario(request);
+		idUsuario = usuarioDao.getIdUsuario();
+		
+		ContatoService contatoService = new ContatoService();
+		contatoService.insereContato(idTelefones, idUsuario, idEmail);
+		
+	}
+	
+	public void insereUsuario(HttpServletRequest request) {
+		Usuario usuario;
+		if(request.getParameter("nome") != null &&
+		   request.getParameter("sobrenome") != null &&
+		   request.getParameter("cpf") != null) {
+			
+			usuario = new Usuario();
+			
+			usuario.setNome(request.getParameter("nome"));
+			usuario.setSobrenome(request.getParameter("sobrenome"));
+			usuario.setCpf(request.getParameter("cpf"));
+			usuario.setAtivo(true);
+			
+			usuarioDao.addUsuario(usuario);
+		}
+		
+	}
 	
 }
